@@ -35,3 +35,11 @@ db.getCollection('posts')
     }]
 )
 ```
+
+### Query based on array length
+
+```js
+db.getCollection('users').find({ 'roles.1': { $exists: true } })
+```
+
+Here we are searching for a collection with size 1 or less.
