@@ -43,3 +43,25 @@ db.getCollection('users').find({ 'roles.1': { $exists: true } })
 ```
 
 Here we are searching for a collection with size 1 or less.
+
+
+### Create a full text search index in mongodb collection
+
+```js
+db.myCollection.createIntex({ '$**': 'text' })
+```
+
+* The `$**` is a wild card that will index all the fields (nested or not).
+* The `text` is the type of the index (in that case, for text fields).
+
+To query the databse, you can use:
+
+```js
+db.getCollection('myCollection').find({ $text: { $search: "my text" } })
+```
+
+https://docs.mongodb.com/manual/text-search/
+
+https://docs.mongodb.com/manual/core/index-text/
+
+
