@@ -49,7 +49,7 @@ git_remove_local_branches develop
 lsof -n -i:$1 | grep LISTEN
 ```
 
-## Transforming video into a gif using ffmpeg
+### Transforming video into a gif using ffmpeg
 
 ```sh
 ffmpeg -i "$1" -vf scale=500:-1 -t 10 -r 10 "$1.gif"
@@ -57,6 +57,13 @@ ffmpeg -i "$1" -vf scale=500:-1 -t 10 -r 10 "$1.gif"
 
 Just replace the `$1` for the path of your video.
 
+### Get iPhone Serial Number
+
+Plug the iphone in your mac and run:
+
+```bash
+system_profiler SPUSBDataType -detailLevel mini | grep -e iPhone -e Serial | sed -En 'N;s/iPhone/&/p'
+```
 
 ## Docker
 
