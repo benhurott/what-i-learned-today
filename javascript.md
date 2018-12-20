@@ -34,3 +34,20 @@ function getBase64FileSize({
   return +result.toFixed(decimalPlaces)
 }
 ```
+
+### throttle
+
+```js
+function throttle(fn, milliseconds) {
+  let lastCallTime;
+
+  return function() {
+    let nowTime = Date.now();
+
+    if(!lastCallTime || lastCallTime < nowTime - milliseconds) {
+      lastCallTime = nowTime;
+      fn();
+    }
+  };
+}
+```
