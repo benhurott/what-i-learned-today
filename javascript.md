@@ -51,3 +51,45 @@ function throttle(fn, milliseconds) {
   };
 }
 ```
+
+### Get query string as object
+
+```js
+function getQueryStringParameters() {
+  const urlParams = new URLSearchParams(window.location.search)
+
+  let result = {}
+
+  const paramKeys = urlParams.keys()
+
+  for (let k of paramKeys) {
+    result[k] = decodeURI(urlParams.get(k))
+  }
+
+  return result
+}
+```
+
+### Set object as query string in url
+
+```js
+function setObjectAsQueryStringInUrl(obj) {
+  if (window.history.pushState) {
+    let params = []
+
+    Object.keys(obj).forEach(k => {
+      params.push(`${k}=${encodeURI(obj[k])}`)
+    })
+
+    const queryString = params.join('&')
+
+    var newurl =
+      window.location.protocol +
+      '//' +
+      window.location.host +
+      window.location.pathname +
+      `?${queryString}`
+    window.history.pushState({ path: newurl }, '', newurl)
+  }
+}
+```
