@@ -178,6 +178,7 @@ public class OauthActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("Error", e.getMessage());
             e.printStackTrace();
+            resolveWithError(e.getMessage());
         }
     }
 
