@@ -143,7 +143,7 @@ public class OauthActivity extends AppCompatActivity {
             authCode = uri.getQueryParameter("code");
             getAccessTokenForCode(authCode);
         }else if(url.contains("error=access_denied")){
-            resolveWithError("Acesso não permitido para esta aplicação.");
+            resolveWithError("Access denied.");
         }
     }
 
